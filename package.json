@@ -1,0 +1,33 @@
+{
+  "name": "skillforge",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "check": "biome check --write .",
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "check-types": "turbo check-types",
+    "dev:native": "turbo -F native dev",
+    "dev:web": "turbo -F web dev",
+    "db:push": "turbo -F @skillforge/db db:push",
+    "db:studio": "turbo -F @skillforge/db db:studio",
+    "db:generate": "turbo -F @skillforge/db db:generate",
+    "db:migrate": "turbo -F @skillforge/db db:migrate"
+  },
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "zod": "^4.1.11"
+  },
+  "devDependencies": {
+    "turbo": "^2.5.4",
+    "@biomejs/biome": "2.3.6",
+    "ultracite": "6.3.4",
+    "tsdown": "^0.15.5",
+    "@types/node": "^22.13.11"
+  },
+  "packageManager": "pnpm@10.20.0"
+}
