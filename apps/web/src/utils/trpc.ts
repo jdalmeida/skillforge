@@ -19,10 +19,13 @@ export const queryClient = new QueryClient({
 	}),
 });
 
-const trpcClient = createTRPCClient<AppRouter>({
+import superjson from "superjson";
+
+export const trpcClient = createTRPCClient<AppRouter>({
 	links: [
 		httpBatchLink({
 			url: "/api/trpc",
+			transformer: superjson,
 			fetch(url, options) {
 				return fetch(url, {
 					...options,

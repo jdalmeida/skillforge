@@ -15,19 +15,21 @@
     "build": "tsdown"
   },
   "devDependencies": {
-    "tsdown": "catalog:",
-    "@skillforge/config": "workspace:*"
+    "@skillforge/config": "workspace:*",
+    "tsdown": "catalog:"
   },
   "peerDependencies": {
     "typescript": "^5"
   },
   "dependencies": {
-    "@trpc/server": "catalog:",
-    "@trpc/client": "catalog:",
-    "next": "catalog:",
-    "dotenv": "catalog:",
-    "zod": "catalog:",
     "@skillforge/auth": "workspace:*",
-    "@skillforge/db": "workspace:*"
+    "@skillforge/db": "workspace:*",
+    "@trpc/client": "catalog:",
+    "@trpc/server": "catalog:",
+    "dotenv": "catalog:",
+    "drizzle-orm": "^0.44.7",
+    "next": "catalog:",
+    "superjson": "^2.2.5",
+    "zod": "catalog:"
   }
 }
