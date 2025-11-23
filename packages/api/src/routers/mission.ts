@@ -22,6 +22,17 @@ export const missionRouter = router({
 		.mutation(async ({ ctx, input }) => {
 			const userId = ctx.session.user.id;
 
+			// Ensure player exists
+			const player = await ctx.db.query.player.findFirst({
+				where: eq(schema.player.userId, userId),
+			});
+
+			if (!player) {
+				await ctx.db.insert(schema.player).values({
+					userId,
+				});
+			}
+
 			// Check if already started
 			const existing = await ctx.db.query.userMission.findFirst({
 				where: and(
