@@ -15,13 +15,13 @@ import { useEffect } from "react";
 // Mock coordinates for the map pins (since we don't have a visual editor yet)
 // In a real app, these would be stored in the DB, but we need to map them to our specific image
 const REGION_COORDS: Record<string, { x: number; y: number }> = {
-	"Tower of Logic": { x: 50, y: 55 },       // Center (Clockwork City)
-	"Tower of Language": { x: 28, y: 25 },    // North-West (Library)
-	"Tower of Creation": { x: 72, y: 25 },    // North-East (Crystal Workshop)
-	"Tower of Memory": { x: 28, y: 75 },      // South-West (Ethereal Valley)
-	"Tower of Empathy": { x: 72, y: 75 },     // South-East (Floating Islands)
-	"Tower of Discipline": { x: 12, y: 50 },  // West (Desert)
-	"Tower of Imagination": { x: 88, y: 50 }, // East (Observatory)
+	"tower-logic": { x: 50, y: 55 },       // Center (Clockwork City)
+	"tower-language": { x: 28, y: 25 },    // North-West (Library)
+	"tower-creation": { x: 72, y: 25 },    // North-East (Crystal Workshop)
+	"tower-memory": { x: 28, y: 75 },      // South-West (Ethereal Valley)
+	"tower-empathy": { x: 72, y: 75 },     // South-East (Floating Islands)
+	"tower-discipline": { x: 12, y: 50 },  // West (Desert)
+	"tower-imagination": { x: 88, y: 50 }, // East (Observatory)
 };
 
 export default function MapPage() {
@@ -63,7 +63,7 @@ export default function MapPage() {
 			{/* Map Pins */}
 			<div className="absolute inset-0 pointer-events-none">
 				{regions?.map((region) => {
-					const coords = REGION_COORDS[region.name] || { x: 50, y: 50 };
+					const coords = REGION_COORDS[region.id] || { x: 50, y: 50 };
 					const isLocked = false; // TODO: Implement lock logic based on player level
 					const isSelected = selectedRegion === region.id;
 
@@ -117,7 +117,7 @@ export default function MapPage() {
 										</div>
 										<div className="flex items-center gap-1 text-blue-400">
 											<Users className="w-4 h-4" />
-											<span>{region.sessions.length} Active</span>
+											<span>{region.sessions.length} Ativos</span>
 										</div>
 									</div>
 
@@ -126,7 +126,7 @@ export default function MapPage() {
 										<div className="mb-4 p-2 rounded-lg bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center gap-2 text-yellow-500">
 											<Trophy className="w-4 h-4" />
 											<span className="text-xs font-bold uppercase tracking-wide">
-												Controlled by {region.sessions[0].guilds[0].guild.name}
+												Controlado por {region.sessions[0].guilds[0].guild.name}
 											</span>
 										</div>
 									)}
@@ -135,7 +135,7 @@ export default function MapPage() {
 										href={`/region/${region.id}` as any}
 										className="block w-full py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-bold transition-colors"
 									>
-										Enter Region
+										Entrar na Região
 									</Link>
 								</motion.div>
 							)}
@@ -147,9 +147,9 @@ export default function MapPage() {
 			{/* Title Overlay */}
 			<div className="absolute md:top-8 top-20 left-1/2 -translate-x-1/2 text-center pointer-events-none">
 				<h1 className="text-2xl md:text-6xl font-bold text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] tracking-widest uppercase font-serif">
-					World Map
+					Mapa Mundi
 				</h1>
-				<p className="text-white/80 text-lg mt-2 drop-shadow-md">Select a region to explore</p>
+				<p className="text-white/80 text-lg mt-2 drop-shadow-md">Selecione uma região para explorar</p>
 			</div>
 		</div>
 	);

@@ -13,13 +13,13 @@ export default function GameHUD() {
 	// Actually, if we are making it "game-like", the HUD *is* the nav.
 	
 	const navItems = [
-		{ href: "/map", icon: Map, label: "Map" },
-		{ href: "/missions", icon: Scroll, label: "Quests" },
-		{ href: "/shop", icon: ShoppingBag, label: "Shop" },
-		{ href: "/inventory", icon: Package, label: "Inventory" },
-		{ href: "/guild", icon: Users, label: "Guild" },
-		{ href: "/leaderboard", icon: Trophy, label: "Ranks" },
-		{ href: "/profile", icon: User, label: "Hero" },
+		{ href: "/map", icon: Map, label: "Mapa" },
+		{ href: "/missions", icon: Scroll, label: "Missões" },
+		{ href: "/shop", icon: ShoppingBag, label: "Loja" },
+		{ href: "/inventory", icon: Package, label: "Inventário" },
+		{ href: "/guild", icon: Users, label: "Guilda" },
+		{ href: "/leaderboard", icon: Trophy, label: "Rankings" },
+		{ href: "/profile", icon: User, label: "Herói" },
 	];
 
 	// Hide HUD on public pages

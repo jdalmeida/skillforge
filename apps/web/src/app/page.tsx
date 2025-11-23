@@ -20,7 +20,7 @@ export default function LandingPage() {
 				<div className="space-y-4 animate-in fade-in slide-in-from-bottom-8 duration-1000">
 					<div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary mb-4">
 						<Sparkles className="w-4 h-4" />
-						<span className="text-sm font-medium uppercase tracking-wider">The Era of Silence Ends</span>
+						<span className="text-sm font-medium uppercase tracking-wider">A Era do Silêncio Termina</span>
 					</div>
 					
 					<h1 className="text-6xl md:text-8xl font-bold tracking-tighter bg-gradient-to-r from-primary via-accent to-secondary bg-clip-text text-transparent drop-shadow-sm">
@@ -28,8 +28,8 @@ export default function LandingPage() {
 					</h1>
 					
 					<p className="text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-						The Towers of Knowledge have awakened. <br/>
-						Join A.L.I.A., restore the lost wisdom, and fight the Entropy.
+						As Torres do Conhecimento despertaram. <br/>
+						Junte-se a A.L.I.A., restaure a sabedoria perdida e lute contra a Entropia.
 					</p>
 				</div>
 
@@ -37,13 +37,13 @@ export default function LandingPage() {
 				<div className="flex flex-col md:flex-row items-center justify-center gap-4 pt-8 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-200">
 					<Link href="/map">
 						<Button size="lg" className="h-16 px-8 text-xl rounded-xl bg-primary hover:bg-primary/90 shadow-xl shadow-primary/20 border-2 border-primary/50 transition-all hover:scale-105">
-							Enter the Simulation
+							Entrar na Simulação
 							<ArrowRight className="ml-2 w-6 h-6" />
 						</Button>
 					</Link>
 					<Link href="/guild">
 						<Button size="lg" variant="outline" className="h-16 px-8 text-xl rounded-xl border-2 hover:bg-accent/10 transition-all hover:scale-105">
-							Join a Guild
+							Juntar-se a uma Guilda
 						</Button>
 					</Link>
 				</div>
@@ -52,25 +52,25 @@ export default function LandingPage() {
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-16 text-left animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-300">
 					<FeatureCard 
 						icon={<Brain className="w-8 h-8 text-accent" />}
-						title="Restore Wisdom"
-						description="Reactivate the 7 Towers of Knowledge by solving cognitive challenges."
+						title="Restaure a Sabedoria"
+						description="Reative as 7 Torres do Conhecimento resolvendo desafios cognitivos."
 					/>
 					<FeatureCard 
 						icon={<Zap className="w-8 h-8 text-primary" />}
-						title="Defeat Entropy"
-						description="Battle the chaos that corrupts ideas and turns wisdom into noise."
+						title="Derrote a Entropia"
+						description="Batalhe contra o caos que corrompe ideias e transforma sabedoria em ruído."
 					/>
 					<FeatureCard 
 						icon={<BookOpen className="w-8 h-8 text-secondary" />}
-						title="Evolve"
-						description="Grow from an Apprentice to an Architect of the Mind."
+						title="Evolua"
+						description="Cresça de um Aprendiz para um Arquiteto da Mente."
 					/>
 				</div>
 			</div>
 			
 			{/* API Status Footer */}
 			<div className="absolute bottom-4 right-4 text-xs text-muted-foreground/50">
-				System Status: {health ? "Online" : "Connecting..."}
+				Status do Sistema: {health ? "Online" : "Conectando..."}
 			</div>
 		</div>
 	);
