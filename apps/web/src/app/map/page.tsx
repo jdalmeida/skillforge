@@ -12,9 +12,13 @@ import { cn } from "@/lib/utils";
 // Mock coordinates for the map pins (since we don't have a visual editor yet)
 // In a real app, these would be stored in the DB, but we need to map them to our specific image
 const REGION_COORDS: Record<string, { x: number; y: number }> = {
-	"The Beginning Fields": { x: 20, y: 60 },
-	"Forest of Logic": { x: 50, y: 40 },
-	"Mountain of Code": { x: 80, y: 25 },
+	"Tower of Logic": { x: 50, y: 55 },       // Center (Clockwork City)
+	"Tower of Language": { x: 28, y: 25 },    // North-West (Library)
+	"Tower of Creation": { x: 72, y: 25 },    // North-East (Crystal Workshop)
+	"Tower of Memory": { x: 28, y: 75 },      // South-West (Ethereal Valley)
+	"Tower of Empathy": { x: 72, y: 75 },     // South-East (Floating Islands)
+	"Tower of Discipline": { x: 12, y: 50 },  // West (Desert)
+	"Tower of Imagination": { x: 88, y: 50 }, // East (Observatory)
 };
 
 export default function MapPage() {
@@ -34,7 +38,7 @@ export default function MapPage() {
 			{/* Map Container with Zoom/Pan potential */}
 			<div className="absolute inset-0 w-full h-full">
 				<Image
-					src="/world-map.png"
+					src="/world-map.jpg"
 					alt="World Map"
 					fill
 					className="object-cover object-center opacity-80 hover:opacity-100 transition-opacity duration-1000"

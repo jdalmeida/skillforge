@@ -35,7 +35,7 @@ export default function QuizInterface({ missionId, content, onComplete }: QuizIn
 		onSuccess: (data) => {
 			setIsSubmitting(false);
 			if (data.success) {
-				if (data.score !== undefined && data.score < 100) {
+				if (typeof data.score === "number" && data.score < 100) {
 					toast.error((data as any).message || "Mission failed. Try again!");
 					// Reset quiz to try again
 					setCurrentQuestionIndex(0);

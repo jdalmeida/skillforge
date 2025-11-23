@@ -27,6 +27,11 @@ export const playerRouter = router({
 				where: eq(schema.player.userId, userId),
 				with: {
 					guild: true,
+					equipment: {
+						with: {
+							equipment: true,
+						},
+					},
 				},
 			});
 		}

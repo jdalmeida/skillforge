@@ -17,5 +17,10 @@ export const appRouter = router({
 	player: playerRouter,
 	shop: shopRouter,
 	leaderboard: leaderboardRouter,
+	privateData: protectedProcedure.query(({ ctx }) => {
+		return {
+			message: `Hello from private data`,
+		};
+	}),
 });
 export type AppRouter = typeof appRouter;
