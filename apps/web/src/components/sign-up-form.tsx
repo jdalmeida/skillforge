@@ -31,7 +31,7 @@ export default function SignUpForm({
 				},
 				{
 					onSuccess: () => {
-						router.push("/dashboard");
+						router.push("/map");
 						toast.success("Sign up successful");
 					},
 					onError: (error) => {

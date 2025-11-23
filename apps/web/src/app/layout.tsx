@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../index.css";
 import Providers from "@/components/providers";
 import GameHUD from "@/components/game-hud";
+import MainLayout from "@/components/main-layout";
 
 const geistSans = Geist({
 	variable: "--font-geist-sans",
@@ -32,9 +33,9 @@ export default function RootLayout({
 				<Providers>
 					<div className="relative w-full h-screen overflow-hidden flex flex-col">
 						<GameHUD />
-						<main className="flex-1 relative overflow-auto scrollbar-hide">
+						<MainLayout>
 							{children}
-						</main>
+						</MainLayout>
 					</div>
 				</Providers>
 			</body>

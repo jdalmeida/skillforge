@@ -8,6 +8,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { authClient } from "@/lib/auth-client";
+import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 
 // Mock coordinates for the map pins (since we don't have a visual editor yet)
 // In a real app, these would be stored in the DB, but we need to map them to our specific image
@@ -24,8 +27,16 @@ const REGION_COORDS: Record<string, { x: number; y: number }> = {
 export default function MapPage() {
 	const { data: regions, isLoading } = useQuery(trpc.map.listRegions.queryOptions());
 	const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
+	const { data: session, isPending: isSessionPending } = authClient.useSession();
+	const router = useRouter();
 
-	if (isLoading) {
+	useEffect(() => {
+		if (!isSessionPending && !session) {
+			router.push("/login");
+		}
+	}, [session, isSessionPending, router]);
+
+	if (isSessionPending || isLoading) {
 		return (
 			<div className="flex items-center justify-center min-h-screen bg-background text-primary">
 				<div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-primary" />
@@ -94,7 +105,7 @@ export default function MapPage() {
 									initial={{ opacity: 0, y: 10, scale: 0.9 }}
 									animate={{ opacity: 1, y: 0, scale: 1 }}
 									exit={{ opacity: 0, y: 10, scale: 0.9 }}
-									className="absolute top-16 left-1/2 -translate-x-1/2 w-72 bg-card/95 backdrop-blur-xl border-2 border-primary/50 rounded-xl p-4 shadow-2xl z-50 text-center"
+									className="fixed bottom-24 left-4 right-4 md:absolute md:top-16 md:left-1/2 md:right-auto md:bottom-auto md:-translate-x-1/2 w-auto md:w-72 bg-card/95 backdrop-blur-xl border-2 border-primary/50 rounded-xl p-4 shadow-2xl z-50 text-center"
 								>
 									<h3 className="text-xl font-bold text-primary mb-2">{region.name}</h3>
 									<p className="text-sm text-muted-foreground mb-4">{region.description}</p>
@@ -134,8 +145,8 @@ export default function MapPage() {
 			</div>
 			
 			{/* Title Overlay */}
-			<div className="absolute top-8 left-1/2 -translate-x-1/2 text-center pointer-events-none">
-				<h1 className="text-4xl md:text-6xl font-bold text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] tracking-widest uppercase font-serif">
+			<div className="absolute md:top-8 top-20 left-1/2 -translate-x-1/2 text-center pointer-events-none">
+				<h1 className="text-2xl md:text-6xl font-bold text-white drop-shadow-[0_4px_4px_rgba(0,0,0,0.8)] tracking-widest uppercase font-serif">
 					World Map
 				</h1>
 				<p className="text-white/80 text-lg mt-2 drop-shadow-md">Select a region to explore</p>

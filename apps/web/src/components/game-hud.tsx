@@ -22,6 +22,11 @@ export default function GameHUD() {
 		{ href: "/profile", icon: User, label: "Hero" },
 	];
 
+	// Hide HUD on public pages
+	if (pathname === "/" || pathname === "/login") {
+		return null;
+	}
+
 	return (
 		<>
 			{/* Top Bar - Resource / Status Display */}
@@ -50,8 +55,8 @@ export default function GameHUD() {
 			</div>
 
 			{/* Bottom Bar - Main Navigation */}
-			<div className="fixed bottom-0 left-0 right-0 z-50 p-4 pointer-events-none flex justify-center">
-				<nav className="bg-background/95 backdrop-blur-xl border-2 border-primary/50 rounded-2xl shadow-2xl p-2 pointer-events-auto flex gap-2 md:gap-4 items-end">
+			<div className="fixed bottom-0 left-0 right-0 z-50 p-2 md:p-4 pointer-events-none flex justify-center">
+				<nav className="bg-background/95 backdrop-blur-xl border-2 border-primary/50 rounded-2xl shadow-2xl p-1 md:p-2 pointer-events-auto flex gap-1 md:gap-4 items-center overflow-x-auto max-w-full">
 					{navItems.map((item) => {
 						const isActive = pathname === item.href;
 						return (
@@ -59,14 +64,14 @@ export default function GameHUD() {
 								key={item.href}
 								href={item.href as any}
 								className={cn(
-									"flex flex-col items-center gap-1 p-3 rounded-xl transition-all duration-300 min-w-[4.5rem]",
+									"flex flex-col items-center gap-1 p-2 md:p-3 rounded-xl transition-all duration-300 min-w-[3.5rem] md:min-w-[4.5rem]",
 									isActive 
-										? "bg-primary text-primary-foreground -translate-y-4 shadow-lg scale-110 border-2 border-secondary" 
+										? "bg-primary text-primary-foreground -translate-y-2 md:-translate-y-4 shadow-lg scale-105 md:scale-110 border-2 border-secondary" 
 										: "hover:bg-primary/10 text-muted-foreground hover:text-primary"
 								)}
 							>
-								<item.icon className={cn("w-6 h-6", isActive && "w-7 h-7")} />
-								<span className="text-[10px] font-bold uppercase tracking-wider">{item.label}</span>
+								<item.icon className={cn("w-5 h-5 md:w-6 md:h-6", isActive && "w-6 h-6 md:w-7 md:h-7")} />
+								<span className={cn("text-[8px] md:text-[10px] font-bold uppercase tracking-wider", !isActive && "hidden md:block")}>{item.label}</span>
 							</Link>
 						);
 					})}
