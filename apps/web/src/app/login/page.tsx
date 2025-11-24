@@ -2,18 +2,18 @@
 
 import SignInForm from "@/components/sign-in-form";
 import SignUpForm from "@/components/sign-up-form";
-import { auth } from "@skillforge/auth";
+import { useQuery } from "@tanstack/react-query";
+import { trpc } from "@/utils/trpc";
+import { useRouter } from "nextjs/navigation"
 import { useState } from "react";
 
 export default function LoginPage() {
 	const [showSignIn, setShowSignIn] = useState(false);
-	
-	const session = await auth.api.getSession({
-		headers: await headers(),
-	});
+	const router = useRouter();
+	const { data: player, isLoading } = useQuery(trpc.player.me.queryOptions());
 
-	if (session?.user) {
-		redirect("/dashboard");
+	if (player) {
+		router.redirect("/dashboard");
 	}
 
 	return showSignIn ? (
